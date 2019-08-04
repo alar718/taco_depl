@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> <!--for AJAX-->
+    <script src="{{ url_for('static', filename='wall.js') }}"></script> <!-- for AJAX-->
+    <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <style>
+        .note
+        {
+            text-align: center;
+            height: 80px;
+            background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+            color: #fff;
+            font-weight: bold;
+            line-height: 80px;
+        }
+        .form-content
+        {
+            padding: 5%;
+            border: 1px solid #ced4da;
+            margin-bottom: 2%;
+        }
+        .form-control
+        {
+            border-radius:1.5rem;
+        }
+        .btnSubmit
+        {
+            border:none;
+            border-radius:1.5rem;
+            padding: 1%;
+            width: 20%;
+            cursor: pointer;
+            background: #0062cc;
+            color: #fff;
+        }
+        .room_below
+        {
+            padding-bottom: 25px;
+        }
+        
+    </style>
+    <title>Dojo Taqueria</title>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <form action = "/users/welcome" method="post">
+                <button type="submit">Go to temporary welcome!</button>
+            </form>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="navbar-brand" href="#">Welcome to Dojo Taqueria!</div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+
+            {#<h3>{% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p>{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}</h3>#}
+        
+            
+            
+            
+                <div class="container register-form">
+                    <div class="form">
+                        <div class="note">
+                            <p>Please register below for your free account.</p>
+                        </div>
+                        <form action="/users/add" method="POST" id="regForm">
+            
+                        <div class="form-content">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group room_below">
+                                        <input type="text" class="form-control" placeholder="Your Name *" value="" name="name"/>
+                                        <!-- <small id="passwordHelpBlock" class="form-text text-muted"> Please check safelist our domain.</small> -->
+                                    </div>
+                                    <div class="form-group">
+                                        <div id="usernameMsg"></div> <!--For Ajax-->
+                                        <input type="text" class="form-control" placeholder="Email *" value="" name="email" id="username"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Your Password *" value="" name="password1"/>
+                                        <small id="passwordHelpBlock" class="form-text text-muted">
+                                            Your password must be at least 8 characters long.
+                                        </small>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Confirm Password *" value="" name="password2"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btnSubmit">Register</button>
+                    </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            
+        
+        
+                <div class="container register-form">
+                    <div class="form">
+                        <div class="note">
+                            <p>Please log in below.</p>
+                        </div>
+                <form action="/users/login" method="POST">
+        
+                        <div class="form-content">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Email *" value="" name="logemail"/>
+                                    </div>
+                                    <!-- <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Phone Number *" value=""/>
+                                    </div> -->
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Your Password *" value="" name="logpassword"/>
+                                    </div>
+                                    <!-- <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Confirm Password *" value=""/>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <button type="submit" class="btnSubmit">Login</button>
+                    </form>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+        </div>
+    </div>
+
+    
+    
+</body>
+</html>

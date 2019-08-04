@@ -1,0 +1,1 @@
+SELECT * FROM mac_taqueria1.items;
